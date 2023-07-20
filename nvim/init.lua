@@ -1,27 +1,31 @@
-vim.g.mapleader = " "
-local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
-vim.keymap.set("v", "<C-c>", '"*y :let @+=@*<CR>', { silent=true })
-vim.keymap.set("n", "<C-v>", '"+p', { silent=true})
-vim.keymap.set("n", "<C-h>", '<c-w>h', {})
-vim.keymap.set("n", "<C-j>", '<c-w>j', {})
-vim.keymap.set("n", "<C-k>", '<c-w>k', {})
-vim.keymap.set("n", "<C-l>", '<c-w>l', {})
-vim.keymap.set("n", "<C-n>", vim.cmd.NERDTreeToggle)
+local telescope_exists, telescope_builtin = pcall(require, "telescope.builtin")
+local treesitter_exists, treesitter_configs = pcall(require, "nvim-treesitter.configs")
 
-require'nvim-treesitter.configs'.setup {
-  --ensure_installed = { "markdown", "javascript", "typescript", "ruby", "bash", "c", "lua", "vim", "vimdoc", "query" },
-  ensure_installed = { "ruby" },
-  sync_install = false,
-  auto_install = true,
-  highlight = {
+if telescope_exists and treesitter_exists then
+  vim.g.mapleader = " "
+  vim.keymap.set('n', '<leader>ff', telescope_builtin.find_files, {})
+  vim.keymap.set('n', '<leader>fg', telescope_builtin.live_grep, {})
+  vim.keymap.set('n', '<leader>fb', telescope_builtin.buffers, {})
+  vim.keymap.set('n', '<leader>fh', telescope_builtin.help_tags, {})
+  vim.keymap.set("v", "<C-c>", '"*y :let @+=@*<CR>', { silent=true })
+  vim.keymap.set("n", "<C-v>", '"+p', { silent=true})
+  vim.keymap.set("n", "<C-h>", '<c-w>h', {})
+  vim.keymap.set("n", "<C-j>", '<c-w>j', {})
+  vim.keymap.set("n", "<C-k>", '<c-w>k', {})
+  vim.keymap.set("n", "<C-l>", '<c-w>l', {})
+  vim.keymap.set("n", "<C-n>", vim.cmd.NERDTreeToggle)
+
+  treesitter_configs.setup {
+    --ensure_installed = { "markdown", "javascript", "typescript", "ruby", "bash", "c", "lua", "vim", "vimdoc", "query" },
+    ensure_installed = { "ruby" },
+    sync_install = false,
+    auto_install = true,
+    highlight = {
     enable = true,
     additional_vim_regex_highlighting = false,
-  },
-}
+    },
+  }
+end
 
 vim.cmd [[packadd packer.nvim]]
 
