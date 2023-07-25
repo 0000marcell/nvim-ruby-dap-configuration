@@ -48,8 +48,12 @@ return require('packer').startup(function(use)
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
 
   -- just color scheme remove it if you want
-  use 'folke/tokyonight.nvim'
-  vim.cmd("colorscheme tokyonight")
+  use {
+	  'folke/tokyonight.nvim',
+	  config = function()
+            vim.cmd("colorscheme tokyonight")
+	  end
+  }
   vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
   vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 
