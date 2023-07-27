@@ -2,8 +2,7 @@
 backup_path="$HOME/.config/nvimbackup"
 
 if [ -d "$backup_path" ]; then
-    echo "The $backup_path folder already exists, solve this conflict before continuing."
-    exit 1
+    echo "$backup_path folder already exists, skiping backup"
 else
     echo "Moving your current configuration to $backup_path"
     mv $HOME/.config/nvim $backup_path

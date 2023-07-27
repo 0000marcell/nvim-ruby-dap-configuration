@@ -142,6 +142,7 @@ return require('packer').startup(function(use)
 			    s = { "<cmd>lua require'dap'.continue()<cr>", "Start" },
 			    t = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Toggle Breakpoint" },
 			    x = { "<cmd>lua require'dap'.terminate()<cr>", "Terminate" },
+			    X = { "<cmd>lua require'dap'.clear_breakpoints()<cr>", "Clear breakpoints" },
 			    u = { "<cmd>lua require'dap'.step_out()<cr>", "Step Out" },
 			    h = { "<cmd>lua require'dap.ui.widgets'.hover()<cr>", "Hover Variables" },
 			    U = { "<cmd>lua require'dapui'.toggle()<cr>", "Toggle UI" },
