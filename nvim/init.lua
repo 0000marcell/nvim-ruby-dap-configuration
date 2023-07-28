@@ -2,6 +2,7 @@ local telescope_exists, telescope_builtin = pcall(require, "telescope.builtin")
 local treesitter_exists, treesitter_configs = pcall(require, "nvim-treesitter.configs")
 
 if telescope_exists and treesitter_exists then
+  -- ignore this start
   vim.g.mapleader = " "
   vim.keymap.set('n', '<leader>ff', telescope_builtin.find_files, {})
   vim.keymap.set('n', '<leader>fg', telescope_builtin.live_grep, {})
@@ -14,6 +15,7 @@ if telescope_exists and treesitter_exists then
   vim.keymap.set("n", "<C-k>", '<c-w>k', {})
   vim.keymap.set("n", "<C-l>", '<c-w>l', {})
   vim.keymap.set("n", "<C-n>", vim.cmd.NERDTreeToggle)
+  -- ignore this end
 
   treesitter_configs.setup {
     --ensure_installed = { "markdown", "javascript", "typescript", "ruby", "bash", "c", "lua", "vim", "vimdoc", "query" },
